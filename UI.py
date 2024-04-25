@@ -2,6 +2,7 @@ import tkinter as tk
 from tkinter import filedialog
 from collections import Counter
 import shutil
+import zipfile
 
 def contar_caracteres_lineas(archivo_entrada, archivo_salida):
     try: 
@@ -51,16 +52,27 @@ def descargar_resultados():
         shutil.copy(archivo_salida, filename)
         print(f"Resultados guardados como '{filename}'")
 
+def descomprimir_archivo():
+    # Aquí puedes agregar la lógica para descomprimir el archivo
+    print("Función de descompresión no implementada aún")
+
 root = tk.Tk()
 root.title("Contador de Caracteres y Líneas")
+root.geometry("400x150")
+
+bienvenida_label = tk.Label(root, text="Bienvenidos al comprimidor de archivos", font=("Arial", 14))
+bienvenida_label.pack(pady=5)
 
 frame = tk.Frame(root)
 frame.pack(padx=10, pady=10)
 
-procesar_button = tk.Button(frame, text="Procesar Archivo", command=procesar_archivo)
-procesar_button.pack(side=tk.LEFT)
+procesar_button = tk.Button(frame, text="Procesar Archivo", command=procesar_archivo, bg="sky blue", fg="white", relief="raised")
+procesar_button.pack(side=tk.LEFT, padx=5)
 
-descargar_button = tk.Button(frame, text="Descargar Resultados", command=descargar_resultados)
-descargar_button.pack(side=tk.LEFT)
+descargar_button = tk.Button(frame, text="Descargar Resultados", command=descargar_resultados, bg="orange", fg="white", relief="raised")
+descargar_button.pack(side=tk.LEFT, padx=5)
+
+descomprimir_button = tk.Button(frame, text="Descomprimir Archivo", command=descomprimir_archivo, bg="green", fg="white", relief="raised")
+descomprimir_button.pack(side=tk.LEFT, padx=5)
 
 root.mainloop()
